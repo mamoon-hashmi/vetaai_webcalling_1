@@ -156,7 +156,7 @@ function startAgentSTT(remoteStream, { lang="en", sliceMs=800 } = {}){
     form.append("lang", lang);
     
     try {
-      const res = await fetch("/v1/stt/agent", { 
+      const res = await fetch("https://webcall.vetaai.com/v1/stt/agent", { 
         method:"POST", 
         body:form, 
         signal: sttAbort.signal 
@@ -203,7 +203,7 @@ async function connect(){
   // Get session token from backend
   let data;
   try {
-    const resp = await fetch("/v1/voice/session", {
+    const resp = await fetch("https://webcall.vetaai.com/v1/voice/session", {
       method: "POST",
       headers: { "Content-Type":"application/json" },
       body: JSON.stringify({})
@@ -355,4 +355,5 @@ function unmute(){
 connectBtn.addEventListener("click", connect);
 disconnectBtn.addEventListener("click", disconnect);
 muteBtn.addEventListener("click", mute);
+
 unmuteBtn.addEventListener("click", unmute);
