@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,54 +16,308 @@
     }
 
     @keyframes endingPulse {
-      0% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(0.92); opacity: 0.5; }
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(0.92);
+        opacity: 0.5;
+      }
     }
 
     /* Baaki sab CSS same hai jo tumne di thi */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: white; color: #1f2937; min-height: 100vh; padding: 2rem; }
-    .container { max-width: 800px; margin: 0 auto; }
-    .header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid #f3f4f6; }
-    .header h1 { font-size: 2rem; font-weight: 700; color: #8B5CF6; margin-bottom: 0.5rem; }
-    .header p { color: #6b7280; font-size: 0.95rem; }
-    .card { background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    .card-title { font-size: 0.875rem; font-weight: 600; color: #8B5CF6; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5rem; text-align: center; }
-    .voice-visual { display: flex; justify-content: center; align-items: center; padding: 2rem 1rem; position: relative; }
-    .voice-ring { width: 220px; height: 220px; border: 3px solid #8B5CF6; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; transition: all 0.4s ease; }
-    .voice-ring.connecting { animation: connectingPulse 1.5s ease-in-out infinite; border-color: #a78bfa; }
-    .voice-ring.connected { border-color: #8B5CF6; box-shadow: 0 0 0 8px rgba(139,92,246,0.1); }
-    .voice-ring.active { animation: activePulse 2s ease-in-out infinite; border-color: #7c3aed; box-shadow: 0 0 25px rgba(139,92,246,0.5); }
-    @keyframes connectingPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
-    @keyframes activePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
-    .ring-inner { width: 180px; height: 180px; background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    .ring-text { font-size: 0.875rem; font-weight: 600; color: #8B5CF6; }
-    .eq-bars { display: flex; gap: 4px; align-items: flex-end; height: 40px; margin-top: 0.75rem; }
-    .bar { width: 4px; background: #8B5CF6; border-radius: 2px; height: 8px; transition: height 0.1s; }
-    .control-buttons { display: flex; justify-content: center; gap: 1rem; margin: 2rem 0 1.5rem; flex-wrap: wrap; }
-    .icon-btn { width: 56px; height: 56px; border: 2px solid #8B5CF6; border-radius: 50%; background: white; color: #8B5CF6; font-size: 1.25rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
-    .icon-btn:hover:not(:disabled) { background: #f9fafb; transform: scale(1.05); }
-    .icon-btn.primary { background: #8B5CF6; color: white; }
-    .icon-btn.primary:hover:not(:disabled) { background: #7c3aed; }
-    .icon-btn.danger { border-color: #ef4444; color: #ef4444; }
-    .icon-btn.danger:hover:not(:disabled) { background: #fef2f2; }
-    .icon-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-    .status-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; padding: 1rem; background: #f9fafb; border-radius: 8px; justify-content: center; }
-    .status-badge { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 0.813rem; font-weight: 500; }
-    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #d1d5db; }
-    .status-dot.active { background: #8B5CF6; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
-    .transcript-box { background: #f9fafb; border-radius: 8px; padding: 1rem; min-height: 80px; }
-    .transcript-label { font-size: 0.75rem; font-weight: 600; color: #8B5CF6; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
-    .transcript-text { color: #1f2937; font-size: 0.95rem; line-height: 1.6; font-style: italic; }
-    .transcript-text.placeholder { color: #9ca3af; font-style: normal; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: white;
+      color: #1f2937;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid #f3f4f6;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #8B5CF6;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    .card {
+    
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #8B5CF6;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .voice-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+
+    .voice-ring {
+      width: 220px;
+      height: 220px;
+      border: 3px solid #8B5CF6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .voice-ring.connecting {
+      animation: connectingPulse 1.5s ease-in-out infinite;
+      border-color: #a78bfa;
+    }
+
+    .voice-ring.connected {
+      border-color: #8B5CF6;
+      box-shadow: 0 0 0 8px rgba(139, 92, 246, 0.1);
+    }
+
+    .voice-ring.active {
+      animation: activePulse 2s ease-in-out infinite;
+      border-color: #7c3aed;
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+    }
+
+    @keyframes connectingPulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.08)
+      }
+    }
+
+    @keyframes activePulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.1)
+      }
+    }
+
+    .ring-inner {
+      width: 180px;
+      height: 180px;
+      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ring-text {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #8B5CF6;
+    }
+
+    .eq-bars {
+      display: flex;
+      gap: 4px;
+      align-items: flex-end;
+      height: 40px;
+      margin-top: 0.75rem;
+    }
+
+    .bar {
+      width: 4px;
+      background: #8B5CF6;
+      border-radius: 2px;
+      height: 8px;
+      transition: height 0.1s;
+    }
+
+    .control-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .icon-btn {
+      width: 56px;
+      height: 56px;
+      border: 2px solid #8B5CF6;
+      border-radius: 50%;
+      background: white;
+      color: #8B5CF6;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-btn:hover:not(:disabled) {
+      background: #f9fafb;
+      transform: scale(1.05);
+    }
+
+    .icon-btn.primary {
+      background: #8B5CF6;
+      color: white;
+    }
+
+    .icon-btn.primary:hover:not(:disabled) {
+      background: #7c3aed;
+    }
+
+    .icon-btn.danger {
+      border-color: #ef4444;
+      color: #ef4444;
+    }
+
+    .icon-btn.danger:hover:not(:disabled) {
+      background: #fef2f2;
+    }
+
+    .icon-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .status-bar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      padding: 1rem;
+      background: #f9fafb;
+      border-radius: 8px;
+      justify-content: center;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 6px 20px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 0.813rem;
+      font-weight: 500;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #d1d5db;
+    }
+
+    .status-dot.active {
+      background: #8B5CF6;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.5
+      }
+    }
+
+    .transcript-box {
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 1rem;
+      min-height: 80px;
+    }
+
+    .transcript-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #8B5CF6;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .transcript-text {
+      color: #1f2937;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .transcript-text.placeholder {
+      color: #9ca3af;
+      font-style: normal;
+    }
+
     @media (max-width: 640px) {
-      body { padding: 1rem; }
-      .voice-ring { width: 180px; height: 180px; }
-      .ring-inner { width: 140px; height: 140px; }
+      body {
+        padding: 1rem;
+      }
+
+      .voice-ring {
+        width: 180px;
+        height: 180px;
+      }
+
+      .ring-inner {
+        width: 140px;
+        height: 140px;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="card">
@@ -71,8 +326,14 @@
           <div class="ring-inner">
             <div class="ring-text">Voice Agent</div>
             <div class="eq-bars">
-              <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-              <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
             </div>
           </div>
         </div>
@@ -80,15 +341,19 @@
 
       <div class="control-buttons">
         <button id="connectBtn" class="icon-btn primary" title="Connect"><i class="fas fa-phone"></i></button>
-        <button id="disconnectBtn" class="icon-btn danger" disabled title="Disconnect"><i class="fas fa-phone-slash"></i></button>
+        <button id="disconnectBtn" class="icon-btn danger" disabled title="Disconnect"><i
+            class="fas fa-phone-slash"></i></button>
         <button id="muteBtn" class="icon-btn" disabled title="Mute"><i class="fas fa-microphone"></i></button>
         <button id="unmuteBtn" class="icon-btn" disabled title="Unmute"><i class="fas fa-microphone-slash"></i></button>
       </div>
 
       <div class="status-bar">
-        <div class="status-badge"><span class="status-dot" id="rtcDot"></span><span id="rtcInfo">Disconnected</span></div>
-        <div class="status-badge"><span class="status-dot" id="captionsDot"></span><span id="captionsInfo">Captions: None</span></div>
-        <div class="status-badge"><span class="status-dot" id="agentDot"></span><span id="agentSpeakingBadge">Agent: Veta AI</span></div>
+        <div class="status-badge"><span class="status-dot" id="rtcDot"></span><span id="rtcInfo">Disconnected</span>
+        </div>
+        <div class="status-badge"><span class="status-dot" id="captionsDot"></span><span id="captionsInfo">Captions:
+            None</span></div>
+        <div class="status-badge"><span class="status-dot" id="agentDot"></span><span id="agentSpeakingBadge">Agent:
+            Veta AI</span></div>
       </div>
     </div>
 
@@ -104,15 +369,3 @@
       </div>
     </div>
   </div>
-
-<script src="https://cdn.jsdelivr.net/gh/mamoon-hashmi/vetaai_webcalling_7@main/app.js"></script>
-</body>
-
-
-</html>
-
-
-
-
-
-
