@@ -53,7 +53,7 @@
     }
 
     function setAgentSpeaking(on){
-      agentSpeakingBadge.textContent = `Agent: ${on ? "Speaking" : "Idle"}`;
+      agentSpeakingBadge.textContent = `Agent: ${on ? "Speaking" : "Veta AI"}`;
       agentDot.classList.toggle("active", on);
       if (connected && !isEndingCall) voiceRing.classList.toggle("active", on);
     }
@@ -264,3 +264,4 @@
     disconnectBtn.onclick = disconnect;
     muteBtn.onclick = mute;
     unmuteBtn.onclick = unmute;
+
